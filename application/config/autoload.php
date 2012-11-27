@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database','session','sentinel','warden','form_va
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('debug_me','guard','form');
+$autoload['helper'] = array('debug_me','guard','form','url');
 
 
 /*
