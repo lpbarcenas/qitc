@@ -80,11 +80,10 @@ class Administrator extends CI_Controller{
 		$this->sessionbrowser->getInfo($params);
 		$arr = $this->sessionbrowser->mData;
 		if($arr['admin_islog']){
-			redirect();
+			redirect('admin/adminHome');
 		}
 		
 	}
 	
-	hahahahahahaha
 	
 }
