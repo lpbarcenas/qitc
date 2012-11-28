@@ -85,5 +85,4 @@ class Administrator extends CI_Controller{
 		
 	}
 	
-	
 }
