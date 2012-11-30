@@ -1,7 +1,7 @@
-<?php	if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Home extends CI_controller{
+class Visible extends CI_controller{
 	
 	function __construct(){
 		
