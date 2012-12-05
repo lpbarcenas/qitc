@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><?php echo $title; ?></title>
-<link rel="stylesheet" href="<?php echo base_url();?>css/"/>
+<link rel="stylesheet" href="<?php echo base_url();?>css/login.css"/>
 </head>
 <body>
 <div id="content_wrapper">
