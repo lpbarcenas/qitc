@@ -1,112 +1,69 @@
+*{
+	margin: 0 auto;
+	padding: 0px;outline: none
+}
+
 body{
-	margin:200px 0px; padding:0px;
-	text-align:center;
-}
-#content_wrapper {
-	
-	width: 298px;
-	height: 198px;
-	margin:0 auto;
-	position: relative;
-	cursor: default;
-	-webkit-perspective: 900px;
-	-moz-perspective: 900px;
-	-o-perspective: 900px;
-	-ms-perspective: 900px;
-	perspective: 900px;
-}
-#login_button{
-	position:absolute;
-	width:298px;
-	height:198px;
-	background-image:url(http://localhost/qitcframework/css/images/log_button.jpg);
-	/*GRADIENT*/
-	  background-color: #666460;
-	  background-image: -webkit-gradient(linear, left top, left bottom, from(#666460), to(#030003));
-	  background-image: -webkit-linear-gradient(top, #666460, #030003);
-	  background-image:    -moz-linear-gradient(top, #666460, #030003);
-	  background-image:      -o-linear-gradient(top, #666460, #030003);
-	  background-image:         linear-gradient(to bottom, #666460, #030003);
-}
-#loginForm{
-	 position: absolute;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-}
-#loginForm{
-	position: absolute;
-	width: 298px;
-	height: 198px;
-	-webkit-transform-style: preserve-3d;
-	-moz-transform-style: preserve-3d;
-	-o-transform-style: preserve-3d;
-	-ms-transform-style: preserve-3d;
-	transform-style: preserve-3d;
-}
-#loginForm > div {
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	
-	background-position: center center;
-	-webkit-transition: all 0.4s linear;
-	-moz-transition: all 0.4s linear;
-	-o-transition: all 0.4s linear;
-	-ms-transition: all 0.4s linear;
-	transition: all 0.4s linear;
-	-webkit-transform-origin: 50% 0%;
-	-moz-transform-origin: 50% 0%;
-	-o-transform-origin: 50% 0%;
-	-ms-transform-origin: 50% 0%;
-	transform-origin: 50% 0%;
+	background-image: url('images/admin_logo.jpg');
+	background-repeat:no-repeat;
+	background-position:right top;
 }
 
-#loginForm .login_button{
-	background-image:url(http://localhost/qitcframework/css/images/log_button.jpg);
-}
-.img_bg{
-	background-image:url(http://localhost/qitcframework/css/images/log_button.jpg);
-}
-#loginForm #login {
-	-webkit-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
-	-moz-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
-	-o-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
-	-ms-transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
-	transform: translate3d(0,0,-220px) rotate3d(1,0,0,90deg);
-	opacity: 0;
-}
-#loginForm:hover .login_button {
-	-webkit-transform: translate3d(0,0px,0) rotate3d(1,0,0,0deg);
-	-moz-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
-	-o-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
-	-ms-transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
-	transform: translate3d(0,280px,0) rotate3d(1,0,0,-90deg);
-	background:#0000;
-	opacity: 0;
+form {
+	width:250px;
+	padding:20px;
+	margin-left:20%;
+	margin-top:100px;
+	border: 1px solid #FACC2E;
+	
+	/*** ADDING CSS3 ***/
+	
+	/***ROUNDED CORNERS***/
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	
+	/*** BACKGROUND GRADIENT ***/
+	background:-moz-linear-gradient(19% 75% 90deg,#0174DF, #FF8000);
+	background:-webkit-gradient(linear, 70% 0%, 0% 100%, from(#FF8000), to(#0174DF));
+	
+	/*** SHADOW ***/
+	-moz-box-shadow: 0px -5px 300px #270644;
+	-webkit-box-shadow: 0px -5px 300px #270644;
+	
 }
 
-#loginForm:hover #login {
-	-webkit-transform: rotate3d(1,0,0,0deg);
-	-moz-transform: rotate3d(1,0,0,0deg);
-	-o-transform: rotate3d(1,0,0,0deg);
-	-ms-transform: rotate3d(1,0,0,0deg);
-	transform: rotate3d(1,0,0,0deg);
-	/*GRADIENT*/
-	  background-color: #754a09;
-	  background-image: -webkit-gradient(linear, left top, left bottom, from(#754a09), to(#030003));
-	  background-image: -webkit-linear-gradient(top, #754a09, #030003);
-	  background-image:    -moz-linear-gradient(top, #754a09, #030003);
-	  background-image:      -o-linear-gradient(top, #754a09, #030003);
-	  background-image:         linear-gradient(to bottom, #754a09, #030003);
-	/*BOX SHADOW*/
-	-webkit-box-shadow: 0px 2px 9px 0px #000000;
-	box-shadow: 0px 2px 9px 0px #000000;
-	/*Border*/
-	border-style:solid;
-	border-width:1pt;
-	border-color:#A5A5A5;
+input {
+	width: 230px;
+	height: 35px;
+	background: #FAFAFA;
+	padding: 6px;
+	margin-bottom: 10px;
+	border-top: 1px solid #6E6E6E;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
 	
-	opacity: 1;
+	/*** Adding CSS3 ***/
+ 
+    /*** Transition Selectors - What properties to animate and how long ***/
+    -webkit-transition-property: -webkit-box-shadow, background;
+    -webkit-transition-duration: 0.25s;
+ 
+    /*** Adding a small shadow ***/
+    -moz-box-shadow: 0px 0px 2px #000;
+    -webkit-box-shadow: 0px 0px 2px #000;
+}
+
+input:hover {
+	-webkit-box-shadow: 0px 0px 4px #000;
+    background: #9d39e1;
+    border-top: 1px solid #9d39e1;
+}
+.button {
+    width: 100px;
+    color: #DBA901;
+    text-transform: uppercase;
+    text-shadow: #000 1px 1px;
+    border-top: 1px solid #FAFAFA;
+    margin-top: 10px;
 }
