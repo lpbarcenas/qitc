@@ -49,12 +49,12 @@ color: #999999;
 
 .content_wrapper{
 	border:1px solid #F2F2F2;
-	width:750px;
+	width:1000px;
 	margin:0 auto;
 	margin-top:2px;
 }
 .dark_menu{
-	width:667px;
+	width:737px;
 	-webkit-opacity:1; 
 }
 ul.dark_menu {
@@ -237,7 +237,7 @@ ul.dark_menu {
 
                         /* Second Level List Items Links Style */
                         ul.dark_menu li ul li a, ul.dark_menu li ul li a:link {
-                            color: #73635e;
+                            color: #E6E6E6;
                             display: block;
                             background: transparent none;
                             padding: 10px 5px 10px 5px;

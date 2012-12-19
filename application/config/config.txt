@@ -1,3 +1,4 @@
 admin_uname:ADMIN_USERNAME
 admin_islog:ADMIN_ISLOGGEDIN
 admin_fullname:ADMIN_FULLNAME
+admin_id:ADMIN_ID

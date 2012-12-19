@@ -9,40 +9,16 @@ class Visible extends CI_controller{
 		
 	}
 	
-	function index(){
+	public function index(){
 		
-		$this->homeView();
-		
-	}
-	
-	public function homeView(){
-		
-		$data['main_content'] = "public/home";
-		$data['title'] = "QITC HomePage";
-		$this->load->view('includes/template',$data);
+		$this->_display();
 		
 	}
 	
-	public function aboutView(){
+	private function _display(){
 		
-		$data['main_content'] = "public/about";
-		$data['main_content'] = "About Quantum ..";
-		$this->load->view('includes/template',$data);
-		
-	}
-	
-	public function cotactUsView(){
-		
-		$data['main_content'] = "public/contactUs";
-		$data['title'] = "Contact Us";
-		$this->load->view('includes/template',$data);
-		
-	}
-	
-	public function speakers(){
-		
-		$data['main_content'] = "public/speakers";
-		$data['title'] = "Speakers C.V.";
+		$data['main_content'] = 'public/home';
+		$data['title'] = 'QITC Homepage';
 		$this->load->view('includes/template',$data);
 		
 	}

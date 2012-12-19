@@ -5,50 +5,82 @@ class AdminHome extends CI_Controller{
 	function __construct(){
 
 		parent::__construct();
+		$this->load->model('mdldata');
 
 	}
 	
-	function index(){
+	public function index(){
+		
+		$this->_checkPoint();
+		$this->displayHome();
+		
+	}
+	
+	public function displayHome(){
 		
 		$data['main_content'] = 'admin/adminHome';
-		$data['title'] = 'Administrator Home Page';
+		$data['title'] = 'Administrators Home';
+	//	$data['logs'] = $this->_getLogs();
+		$data['admin'] = $this->_adminDB();
+		$data['admin'] = $this->_getAdmin();
+		
+	//	call_debug($data);
+		
 		$this->load->view('includes/template',$data);
 		
 	}
 	
-	public function newAnnouncement(){
+	private function _getAdmin(){
 		
-		//Using the model
-		$this->load->model('mdldata');
-		$this->mdldata->reset();
+		$params = array('admin_fullname','admin_id');
+		$this->sessionbrowser->getInfo($params);
+		$arr = $this->sessionbrowser->mData;
 		
-		//Retrieving all recent Announcements
-		$strqry = "SELECT * `announcements`";
-		$params['querystring'] = $strqry;
-		$data['announcementLists'] = $this->mdldata->mRecords; //Lists of Announcements that will be displayed;
+	//	call_debug($arr['admin_fullname']);
 		
-		//Call input form and the lists to e displayed
-		$data['main_content'] = 'admin/announcementForm';
-		$data['title'] = 'Admin -- Announcements';
-		$this->load->view('includes/template',$data);
+		return $arr;
 		
 	}
 	
-	public function contents(){
+	private function _getLogs(){
 		
-		//Using the model
-		$this->load->model('mdldata');
+		//All about LOGS DISPLAY of what are the recent activities within the administrator
 		$this->mdldata->reset();
-		
-		//Retrieving all recent contents
-		$strqry = "SELECT * `contents`";
+		$strqry = 'SELECT * FROM `logs` ORDER BY date DESC';
 		$params['querystring'] = $strqry;
-		$data['listOfContents'] = $this->mdldata->mRecords;
+		$this->mdldata->select($params);
+		if($this->mdldata->_mRowCount < 1){
+			$logs1 = "NO RECENT LOGS";
+			return $logs1;
+		} else {
+			$logs2 = $this->mdldata->_mRecords;
+			return $logs2;
+		}
 		
-		//Call the views for displaying all the contents
-		$data['main_content'] = 'admin/contentPage';
-		$data['title'] = 'Admin -- Website Contents';
-		$this->load->view('includes/template',$data);
+	}
+	
+	private function _adminDB(){
+		
+		//Administrator Database
+		$this->mdldata->reset();
+		$strqry = "SELECT * FROM `admin` ORDER BY `lname` ASC";
+		$params['querystring'] = $strqry;
+		$this->mdldata->select($params);
+		$adminList = $this->mdldata->_mRecords;
+		return $adminList;
+		
+	}
+	
+	private function _checkPoint(){
+	
+		//Checking session DATA
+		$params = array('admin_islog');
+		$this->sessionbrowser->getInfo($params);
+		$arr = $this->sessionbrowser->mData;
+		
+		if(empty($arr['admin_islog'])){
+			redirect('admin/administrator');
+		}
 		
 	}
 	

@@ -1,0 +1,27 @@
+@CHARSET "ISO-8859-1";
+#public_container{
+	background:yellow;
+}
+#public_header{
+	background:#848484;
+}
+#public_logo{
+	background:red;
+	text-align:center;
+}
+#public_timer{
+	background:green;
+	text-align:center;
+	margin-left:-5px;
+}
+#public_navigation{
+	margin-left:auto;
+	margin-right:auto;
+}
+#public_navOpt{
+	float:left;
+	list-style:none;
+}
+#public_navOpt li{
+	float:left;
+}

@@ -168,7 +168,7 @@
  *                               );
  *               
  *               $this->mdldata->reset();
- *               $this->mdldata->insert($params)
+ *               $this->mdldata->insert($params);
  * 
  *  
  */

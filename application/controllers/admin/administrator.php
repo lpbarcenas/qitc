@@ -2,7 +2,9 @@
 
 
 class Administrator extends CI_Controller{
-	private $_mfullname; 
+	private $_mfullname;
+	private $_username; 
+	private $_id;
 	
 	function __construct(){
 		
@@ -17,13 +19,13 @@ class Administrator extends CI_Controller{
 	}
 	
 	public function adminform(){
+		
 		$this->_redirectUser();
 		$data['main_content'] = 'admin/login_form';
 		$data['title'] = 'Administrator Login';
 		$this->load->view('includes/template',$data);
 		
 	}
-	
 	
 	function validateAdmin(){
 		
@@ -34,11 +36,16 @@ class Administrator extends CI_Controller{
 		if($this->form_validation->run() == FALSE){
 			$this->adminform();
 		} else {
-			if($this->_isAdmin()){
+			$plength = strlen($this->input->post('ad_user'));
+			if($plength > 10){
+				redirect('admin/administrator');
+			}
+			else if($this->_isAdmin()){
 				$this->_logAdmin();
 				redirect('admin/adminHome');
-			} else {
-				redirect();
+			}
+			else if(!$this->_isAdmin()) {
+				redirect('admin/administrator');
 			}
 		}
 		
@@ -48,27 +55,38 @@ class Administrator extends CI_Controller{
 		
 		$this->load->model('mdldata');
 		$this->mdldata->reset();
-		$strqry = sprintf("SELECT * FROM `administrator` WHERE `adminUser` LIKE %s ",$this->input->post('ad_users'));
+		$strqry = sprintf("SELECT * FROM `admin` WHERE `username` LIKE '%s'",$this->input->post('ad_user'));
 		$params['querystring'] = $strqry;
 		$this->mdldata->select($params);
+		$info = $this->mdldata->_mRecords;
+		
+		$this->_mfullname = $info[0]->fname.' '.$info[0]->lname;
+		$this->_username = $info[0]->username;
+		$this->_id = $info[0]->ad_id;
+		
+	//	call_debug($info[0]->ad_id);
+		
 		if($this->mdldata->_mRowCount < 1){
 			return FALSE;
 		} else {
+			if($info[0]->password == $this->input->post('ad_pass')){
 			return TRUE;
+			} else {
+				return FALSE;
+			}
 		}
 		
-		foreach($this->mdldata->_mRecords as $row){
-			$this->_mfullname = $row->fname.' '.$row->lname;
-		}
+		
 		
 	}//End of _isAdmin()
 	
 	private function _logAdmin(){
 		
 		$params = array(
-				'admin_uname' => $this->input->post('ad_user'),
+				'admin_uname' => $this->_username,
 				'admin_islog' => TRUE,
 				'admin_fullname' => $this->_mfullname,
+				'admin_id' => $this->_id,
 				);
 		$this->sessionbrowser->setInfo($params);
 		
@@ -83,6 +101,27 @@ class Administrator extends CI_Controller{
 			redirect('admin/adminHome');
 		}
 		
+	}//End of _redirectUser()
+	
+	public function logout(){
+		
+		$this->_checkPoint();
+		$params = array('admin_uname','admin_islog','admin_fullname');
+		$this->sessionbrowser->destroy($params);
+		redirect(base_url() . 'admin/administrator');
+	}
+	
+	private function _checkPoint(){
+	
+		//Checking session DATA
+		$params = array('admin_islog');
+		$this->sessionbrowser->getInfo($params);
+		$arr = $this->sessionbrowser->mData;
+	
+		if(empty($arr['admin_islog'])){
+			redirect('admin/administrator');
+		}
+	
 	}
 	
 }
