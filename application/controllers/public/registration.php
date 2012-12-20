@@ -5,6 +5,6 @@ class Registration extends CI_controller {
 	
 	public function index(){
 		
-		// CONTENT HERE
+		$this->load->view('public/reg');
 	}
 }
